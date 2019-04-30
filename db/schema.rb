@@ -24,8 +24,11 @@ ActiveRecord::Schema.define(version: 20190430004226) do
 
   create_table "specials", force: :cascade do |t|
     t.string "name"
-    t.time "runtime"
+    t.integer "runtime_mins"
     t.integer "comedian_id"
+    t.string "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
