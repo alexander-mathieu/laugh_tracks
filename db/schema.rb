@@ -18,7 +18,8 @@ ActiveRecord::Schema.define(version: 20190430004226) do
   create_table "comedians", force: :cascade do |t|
     t.string "name"
     t.integer "age"
-    t.string "city"
+    t.string "birthplace"
+    t.string "image_url"
   end
 
   create_table "specials", force: :cascade do |t|
