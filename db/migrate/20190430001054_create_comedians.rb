@@ -5,6 +5,8 @@ class CreateComedians < ActiveRecord::Migration[5.1]
       t.integer :age
       t.string  :birthplace
       t.string  :image_url
+
+      t.timestamps
     end
   end
 end
