@@ -1,0 +1,6 @@
+<h1>The Funniest People Around!</h1>
+<% @comedians.each do |comedian| %>
+  <h2><%= comedian.name %></h2>
+  <p><%= comedian.age %></p>
+  <p><%= comedian.birthplace %></p>
+<% end %>
