@@ -16,7 +16,7 @@ describe "as a user on the comedian index" do
 
       visit '/comedians'
 
-      within "#comedian-#{comedian_1.id}" do
+      within("#comedian-#{comedian_1.id}") do
         expect(page).to have_content(special_1a.name)
         expect(page).to have_content(special_2a.name)
         expect(page).to have_content(special_3a.name)
@@ -25,7 +25,7 @@ describe "as a user on the comedian index" do
         expect(page).to have_content(special_3a.runtime_mins)
       end
 
-      within "#comedian-#{comedian_2.id}" do
+      within("#comedian-#{comedian_2.id}") do
         expect(page).to have_content(special_1b.name)
         expect(page).to have_content(special_2b.name)
         expect(page).to have_content(special_3b.name)
