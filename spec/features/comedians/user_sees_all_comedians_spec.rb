@@ -8,12 +8,17 @@ describe "user sees all comedians" do
 
       visit '/comedians'
 
-      expect(page).to have_content(comedian_1.name)
-      expect(page).to have_content(comedian_1.age)
-      expect(page).to have_content(comedian_1.birthplace)
-      expect(page).to have_content(comedian_2.name)
-      expect(page).to have_content(comedian_2.age)
-      expect(page).to have_content(comedian_2.birthplace)
+      within "#comedian-#{comedian_1.id}" do
+        expect(page).to have_content(comedian_1.name)
+        expect(page).to have_content(comedian_1.age)
+        expect(page).to have_content(comedian_1.birthplace)
+      end
+
+      within "#comedian-#{comedian_2.id}" do
+        expect(page).to have_content(comedian_2.name)
+        expect(page).to have_content(comedian_2.age)
+        expect(page).to have_content(comedian_2.birthplace)
+      end
     end
   end
 end

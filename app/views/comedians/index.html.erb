@@ -1,6 +1,10 @@
 <h1>The Funniest People Around!</h1>
-<% @comedians.each do |comedian| %>
-  <h2><%= comedian.name %></h2>
-  <p><%= comedian.age %></p>
-  <p><%= comedian.birthplace %></p>
-<% end %>
+<div id="page-container">
+  <% @comedians.each do |comedian| %>
+    <section class="comedian-box" id="comedian-<%= comedian.id %>">
+      <h2><%= comedian.name %></h2>
+      <p><%= comedian.age %></p>
+      <p><%= comedian.birthplace %></p>
+    </section>
+  <% end %>
+</div>
