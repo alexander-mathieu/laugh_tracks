@@ -3,8 +3,15 @@
   <% @comedians.each do |comedian| %>
     <section class="comedian-box" id="comedian-<%= comedian.id %>">
       <h2><%= comedian.name %></h2>
-      <p><%= comedian.age %></p>
-      <p><%= comedian.birthplace %></p>
+      <p>Age: <%= comedian.age %></p>
+      <p>Birthplace: <%= comedian.birthplace %></p>
+      <p>Specials:
+        <% comedian.specials.each do |special| %>
+        <ul>
+          <li><%= special.name %> - <%= special.runtime_mins %> minutes</li>
+        </ul>
+        <% end %>
+      </p>
     </section>
   <% end %>
 </div>
