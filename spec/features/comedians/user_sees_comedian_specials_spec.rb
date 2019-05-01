@@ -15,7 +15,7 @@ describe "as a user on the comedian index" do
       special_3b = comedian_2.specials.create(name: "Live in Pelham, GA!", runtime_mins: 80, image_url: "https://www.images.funny_people/3b")
 
       visit '/comedians'
-      
+
       within "#comedian-#{comedian_1.id}" do
         expect(page).to have_content(special_1a.name)
         expect(page).to have_content(special_2a.name)

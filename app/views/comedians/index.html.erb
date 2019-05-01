@@ -8,11 +8,9 @@
       <p>Specials:
         <% comedian.specials.each do |special| %>
         <ul>
-          <li><%= special.name %></li>
-          <li><%= special.runtime_mins %></li>
-          <br>
-        <% end %>
+          <li><%= special.name %> - <%= special.runtime_mins %> minutes</li>
         </ul>
+        <% end %>
       </p>
     </section>
   <% end %>
