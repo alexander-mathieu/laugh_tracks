@@ -6,4 +6,8 @@ class Comedian < ApplicationRecord
     where({age: age})
   end
 
+  def self.average_age
+    average(:age)
+  end
+
 end
