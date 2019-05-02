@@ -9,6 +9,7 @@ class ComediansController < ApplicationController
   end
 
   def new
+    @comedian = Comedian.new
   end
 
   def create
