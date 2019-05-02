@@ -1,0 +1,17 @@
+<%= form_for Comedian.new do |f| %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :age %><br />
+    <%= f.text_field :age %>
+  </p>
+  <p>
+    <%= f.label :birthplace %><br />
+    <%= f.text_field :birthplace %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
