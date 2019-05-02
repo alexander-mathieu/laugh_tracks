@@ -91,10 +91,11 @@ RSpec.describe "as a user" do
     it "it displays a box at the top of the page called 'statistics'" do
       visit '/comedians'
 
-      average_age = Comedian.average(:age)
+      average_age = Comedian.average(:age).to_i
 
       within("#statistics") do
         expect(page).to have_content("Statistics")
+
         expect(page).to have_content("Average Age: #{average_age}")
       end
     end

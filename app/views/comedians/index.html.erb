@@ -1,5 +1,9 @@
 <h1>The Funniest People Around!</h1>
-<div id="page-container">
+<section id="statistics">
+  <h2>Statistics</h2>
+  <p>Average Age: <%= @comedians.average_age.to_i %></p>
+</section>
+<div id="comedians-container">
   <% @comedians.each do |comedian| %>
     <section class="comedian-box" id="comedian-<%= comedian.id %>">
       <img class="comedian-image" src="<%= comedian.image_url %>"></img>
@@ -12,7 +16,7 @@
           <li><%= special.name %> - <%= special.runtime_mins %> minutes</li>
         </ul>
         <% end %>
-         Total Specials: <%= comedian.specials.count %>
+         Total Specials: <%= comedian.specials_count %>
       </p>
     </section>
   <% end %>
