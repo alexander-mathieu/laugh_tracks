@@ -19,7 +19,7 @@ describe Comedian, type: :model do
 
      @comedian_2 = Comedian.create(name: "Dave Chappelle", age: 45, birthplace: "Washington, D.C.", image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTII3JGyHZiZx-tRsKYcDk8jotJ6kK6yGNiCof1mLfTw5DxekFZtg")
 
-     expect(Comedian.find_by_age(39)).to eq(1)
+     expect(Comedian.find_by_age(39).count).to eq(1)
     end
   end
 end
