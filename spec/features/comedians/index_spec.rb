@@ -75,5 +75,17 @@ RSpec.describe "as a user" do
         expect(page).to_not have_content(@comedian_2.name)
       end
     end
+
+    it "displays a count of all comedian specials within their respective boxes" do
+      visit '/comedians'
+
+      within("#comedian-#{@comedian_1.id}") do
+        expect(page).to have_content("Total Specials: #{@comedian_1.specials.count}")
+      end
+
+      within("#comedian-#{@comedian_2.id}") do
+        expect(page).to have_content("Total Specials: #{@comedian_2.specials.count}")
+      end
+    end
   end
 end
