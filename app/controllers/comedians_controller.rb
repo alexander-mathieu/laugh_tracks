@@ -8,4 +8,8 @@ class ComediansController < ApplicationController
     end
   end
 
+  def new
+
+  end
+
 end
