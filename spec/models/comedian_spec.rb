@@ -38,5 +38,9 @@ describe Comedian, type: :model do
     it "#average_age" do
       expect(Comedian.average_age).to eq(42.0)
     end
+
+    it "#all_birthplaces" do
+      expect(Comedian.all_birthplaces).to eq(["Philadelphia, PA", "Washington, D.C."])
+    end
   end
 end

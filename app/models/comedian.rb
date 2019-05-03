@@ -14,4 +14,8 @@ class Comedian < ApplicationRecord
     average(:age)
   end
 
+  def self.all_birthplaces
+    distinct.pluck(:birthplace)
+  end
+
 end
