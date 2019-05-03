@@ -76,7 +76,7 @@ RSpec.describe "as a user" do
       end
     end
 
-    it "displays a count of all comedian specials within their respective boxes" do
+    it "it displays a count of all comedian specials within their respective boxes" do
       visit '/comedians'
 
       within("#comedian-#{@comedian_1.id}") do
