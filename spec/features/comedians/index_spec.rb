@@ -95,8 +95,9 @@ RSpec.describe "as a user" do
 
       within("#statistics") do
         expect(page).to have_content("Statistics")
-
         expect(page).to have_content("Average Age: #{average_age}")
+        expect(page).to have_content("#{@comedian_1.birthplace}")
+        expect(page).to have_content("#{@comedian_2.birthplace}")
       end
     end
   end
