@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe "as a user" do
   describe "when I visit /comedians" do
-
     before(:each) do
       @comedian_1 = Comedian.create(name: "Kevin Hart", age: 39, birthplace: "Philadelphia, PA", image_url: "http://www.philly.com/resizer/bHw4bvIexfBozzYo6gSgV1vpEXk=/1400x932/center/middle/arc-anglerfish-arc2-prod-pmn.s3.amazonaws.com/public/DBTWGCGWV5C7ZJBACNCBPOCUWE.jpg")
 
