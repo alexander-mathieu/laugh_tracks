@@ -74,6 +74,17 @@ RSpec.describe "as a user" do
         expect(page).to have_content(@comedian_1.name)
         expect(page).to_not have_content(@comedian_2.name)
       end
+
+      it "it displays only statistics for comedians that match that age criteria" do
+        visit '/comedians?age=39'
+
+        within("#statistics") do
+          expect(page).to have_content("Statistics")
+          expect(page).to have_content("Average Age: 39")
+          expect(page).to have_content("#{@comedian_1.birthplace}")
+          expect(page).to_not have_content("#{@comedian_2.birthplace}")
+        end
+      end
     end
 
     it "it displays a count of all comedian specials within their respective boxes" do
