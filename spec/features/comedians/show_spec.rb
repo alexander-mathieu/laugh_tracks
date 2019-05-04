@@ -40,5 +40,13 @@ RSpec.describe "as a user" do
       expect(page).to_not have_content(@special_2b.runtime_mins)
       expect(page).to_not have_content(@special_3b.runtime_mins)
     end
+
+    it "it allows me to navigate back to /comedians" do
+      visit("/comedians/#{@comedian_1.id}")
+
+      click_on('<< Back to All Comedians')
+
+      expect(current_path).to eq('/comedians')
+    end
   end
 end
