@@ -17,4 +17,8 @@ class Comedian < ApplicationRecord
   def self.all_birthplaces
     order(:birthplace).distinct.pluck(:birthplace)
   end
+
+  def self.order_by(attribute)
+    order(attribute)
+  end
 end

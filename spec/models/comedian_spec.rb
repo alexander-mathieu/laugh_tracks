@@ -28,6 +28,8 @@ RSpec.describe Comedian, type: :model do
       @comedian_1 = Comedian.create(name: "Kevin Hart", age: 39, birthplace: "Philadelphia, PA", image_url: "http://www.philly.com/resizer/bHw4bvIexfBozzYo6gSgV1vpEXk=/1400x932/center/middle/arc-anglerfish-arc2-prod-pmn.s3.amazonaws.com/public/DBTWGCGWV5C7ZJBACNCBPOCUWE.jpg")
 
       @comedian_2 = Comedian.create(name: "Dave Chappelle", age: 45, birthplace: "Washington, D.C.", image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTII3JGyHZiZx-tRsKYcDk8jotJ6kK6yGNiCof1mLfTw5DxekFZtg")
+
+      @comedian_3 = Comedian.create(name: "Theo Von", age: 38, birthplace: "Mandeville, LA", image_url: "https://uproxx.files.wordpress.com/2016/02/theo-von-no-offense-feature.jpg?quality=95")
     end
 
     it "#find_by_age" do
@@ -35,11 +37,17 @@ RSpec.describe Comedian, type: :model do
     end
 
     it "#average_age" do
-      expect(Comedian.average_age.to_i).to eq(42)
+      expect(Comedian.average_age.to_i).to eq(40)
     end
 
     it "#all_birthplaces" do
-      expect(Comedian.all_birthplaces).to eq(["Philadelphia, PA", "Washington, D.C."])
+      expect(Comedian.all_birthplaces).to eq(["Mandeville, LA", "Philadelphia, PA", "Washington, D.C."])
+    end
+
+    it "#order_by" do
+      expect(Comedian.order_by(:name)).to eq([@comedian_2, @comedian_1, @comedian_3])
+      expect(Comedian.order_by(:age)).to eq([@comedian_3, @comedian_1, @comedian_2])
+      expect(Comedian.order_by(:birthplace)).to eq([@comedian_3, @comedian_1, @comedian_2])
     end
   end
 end
