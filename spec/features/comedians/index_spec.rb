@@ -18,7 +18,7 @@ RSpec.describe "as a user" do
     end
 
     it "it displays all comedians within their own box" do
-      visit '/comedians'
+      visit('/comedians')
 
       within("#comedian-#{@comedian_1.id}") do
         expect(page).to have_content(@comedian_1.name)
@@ -34,7 +34,7 @@ RSpec.describe "as a user" do
     end
 
     it "it displays all comedian images within their respective boxes" do
-      visit '/comedians'
+      visit('/comedians')
 
       within("#comedian-#{@comedian_1.id}") do
         expect(page).to have_css("img[src='#{@comedian_1.image_url}']")
@@ -46,7 +46,7 @@ RSpec.describe "as a user" do
     end
 
     it "it displays all comedian specials within their respective boxes" do
-      visit '/comedians'
+      visit('/comedians')
 
       within("#comedian-#{@comedian_1.id}") do
         expect(page).to have_content(@special_1a.name)
@@ -67,16 +67,28 @@ RSpec.describe "as a user" do
       end
     end
 
+    it "it displays each comedian name as a link" do
+      visit('/comedians')
+
+      within("#comedian-#{@comedian_1.id}") do
+        expect(page).to have_link(@comedian_1.name)
+      end
+
+      within("#comedian-#{@comedian_2.id}") do
+        expect(page).to have_link(@comedian_2.name)
+      end
+    end
+
     describe "and add the query /comedians?age=39" do
       it "it displays only comedians that match that age criteria" do
-        visit '/comedians?age=39'
+        visit('/comedians?age=39')
 
         expect(page).to have_content(@comedian_1.name)
         expect(page).to_not have_content(@comedian_2.name)
       end
 
       it "it displays only statistics for comedians that match that age criteria" do
-        visit '/comedians?age=39'
+        visit('/comedians?age=39')
 
         within("#statistics") do
           expect(page).to have_content("Statistics")
@@ -88,7 +100,7 @@ RSpec.describe "as a user" do
     end
 
     it "it displays a count of all comedian specials within their respective boxes" do
-      visit '/comedians'
+      visit('/comedians')
 
       within("#comedian-#{@comedian_1.id}") do
         expect(page).to have_content("Total Specials: #{@comedian_1.specials.count}")
@@ -100,7 +112,7 @@ RSpec.describe "as a user" do
     end
 
     it "it displays a box at the top of the page called 'statistics'" do
-      visit '/comedians'
+      visit('/comedians')
 
       average_age = Comedian.average(:age).to_i
 
@@ -109,6 +121,26 @@ RSpec.describe "as a user" do
         expect(page).to have_content("Average Age: #{average_age}")
         expect(page).to have_content("#{@comedian_1.birthplace}")
         expect(page).to have_content("#{@comedian_2.birthplace}")
+      end
+    end
+
+    describe "and click on a comedian name" do
+      it "it displays information about a single comedian" do
+        visit('/comedians')
+
+        click_link(@comedian_1.name)
+
+        expect(current_path).to eq("/comedians/#{@comedian_1.id}")
+
+        expect(page).to have_content(@comedian_1.name)
+        expect(page).to have_content(@comedian_1.age)
+        expect(page).to have_content(@comedian_1.birthplace)
+        expect(page).to have_content(@special_1a.name)
+        expect(page).to have_content(@special_2a.name)
+        expect(page).to have_content(@special_3a.name)
+        expect(page).to have_content(@special_1a.runtime_mins)
+        expect(page).to have_content(@special_2a.runtime_mins)
+        expect(page).to have_content(@special_3a.runtime_mins)
       end
     end
   end
