@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-describe Comedian, type: :model do
-
+RSpec.describe Comedian, type: :model do
   describe "relationships" do
     it {should have_many(:specials)}
   end
@@ -36,7 +35,7 @@ describe Comedian, type: :model do
     end
 
     it "#average_age" do
-      expect(Comedian.average_age).to eq(42.0)
+      expect(Comedian.average_age.to_i).to eq(42)
     end
 
     it "#all_birthplaces" do

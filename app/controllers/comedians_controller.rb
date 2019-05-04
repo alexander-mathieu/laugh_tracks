@@ -7,6 +7,9 @@ class ComediansController < ApplicationController
       @comedians = Comedian.find_by_age(params[:age])
     end
     @average_age = @comedians.average_age
+    @specials        = Special.all
+    @total_specials  = @specials.total_specials
+    @average_runtime = @specials.average_runtime
   end
 
   def show
@@ -29,5 +32,4 @@ class ComediansController < ApplicationController
   def comedian_params
     params.require(:comedian).permit(:name, :age, :birthplace)
   end
-
 end

@@ -17,5 +17,4 @@ class Comedian < ApplicationRecord
   def self.all_birthplaces
     order(:birthplace).distinct.pluck(:birthplace)
   end
-
 end

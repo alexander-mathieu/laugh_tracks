@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe "as a user" do
   describe "when I visit /comedians" do
-
     before(:each) do
       @comedian_1 = Comedian.create(name: "Kevin Hart", age: 39, birthplace: "Philadelphia, PA", image_url: "http://www.philly.com/resizer/bHw4bvIexfBozzYo6gSgV1vpEXk=/1400x932/center/middle/arc-anglerfish-arc2-prod-pmn.s3.amazonaws.com/public/DBTWGCGWV5C7ZJBACNCBPOCUWE.jpg")
 
@@ -114,11 +113,15 @@ RSpec.describe "as a user" do
     it "it displays a box at the top of the page called 'statistics'" do
       visit('/comedians')
 
-      average_age = Comedian.average(:age).to_i
+      total_specials  = Special.all.count
+      average_runtime = Special.average(:runtime_mins).to_i
+      average_age     = Comedian.average(:age).to_i
 
       within("#statistics") do
         expect(page).to have_content("Statistics")
-        expect(page).to have_content("Average Age: #{average_age}")
+        expect(page).to have_content("Total Specials: #{total_specials}")
+        expect(page).to have_content("Average Runtime: #{average_runtime} minutes")
+        expect(page).to have_content("Average Age of Comedians: #{average_age}")
         expect(page).to have_content("#{@comedian_1.birthplace}")
         expect(page).to have_content("#{@comedian_2.birthplace}")
       end
