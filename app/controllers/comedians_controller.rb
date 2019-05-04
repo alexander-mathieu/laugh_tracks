@@ -6,7 +6,9 @@ class ComediansController < ApplicationController
     else
       @comedians = Comedian.find_by_age(params[:age])
     end
-    @average_age = @comedians.average_age
+    @specials       = Special.all
+    @average_age    = @comedians.average_age
+    @total_specials = @specials.total_specials
   end
 
   def show

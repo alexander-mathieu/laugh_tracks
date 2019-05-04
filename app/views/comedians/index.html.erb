@@ -1,13 +1,16 @@
 <h1>The Funniest People Around!</h1>
+
 <section id="statistics">
   <h2>Statistics</h2>
-  <p>Average Age: <%= @average_age.to_i %></p>
+  <p>Total Specials: <%= @total_specials %>
+  <p>Average Age of Comedians: <%= @average_age.to_i %></p>
   <p>Representin':
     <% @comedians.all_birthplaces.each do |birthplace| %>
     <ul>
       <li><%= birthplace %></li>
     </ul>
     <% end %>
+
 </section>
 <div id="comedians-container">
   <% @comedians.each do |comedian| %>
