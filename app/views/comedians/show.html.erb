@@ -1,0 +1,14 @@
+<h2><%= @comedian.name %></h2>
+<img class="comedian-image" src="<%= @comedian.image_url %>" alt="<%= @comedian.name %>"></img>
+<p>Age: <%= @comedian.age %></p>
+<p>Birthplace: <%= @comedian.birthplace %></p>
+<p>Specials:
+  <% @comedian.specials.each do |special| %>
+  <ul>
+    <li><%= special.name %> - <%= special.runtime_mins %> minutes</li>
+  </ul>
+  <% end %>
+  Total Specials: <%= @comedian.specials_count %>
+</p>
+
+<%= link_to "<< Back to All Comedians", '/comedians' %>

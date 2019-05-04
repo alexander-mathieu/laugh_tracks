@@ -9,6 +9,10 @@ class ComediansController < ApplicationController
     @average_age = @comedians.average_age
   end
 
+  def show
+    @comedian = Comedian.find(params[:id])
+  end
+
   def new
     @comedian = Comedian.new
   end
