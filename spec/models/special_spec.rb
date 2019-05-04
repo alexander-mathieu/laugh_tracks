@@ -32,5 +32,9 @@ RSpec.describe Special, type: :model do
     it "#average_runtime" do
       expect(Special.average_runtime.to_i).to eq(68)
     end
+
+    it "#find_by_age" do
+      expect(Special.find_by_age(39).count).to eq(3)
+    end
   end
 end

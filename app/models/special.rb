@@ -9,4 +9,8 @@ class Special < ApplicationRecord
   def self.average_runtime
     average(:runtime_mins)
   end
+
+  def self.find_by_age(age)
+    joins(:comedian).where({comedians: {age: age}})
+  end
 end

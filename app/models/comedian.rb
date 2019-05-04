@@ -7,7 +7,7 @@ class Comedian < ApplicationRecord
   end
 
   def self.find_by_age(age)
-    where({age: age})
+    where(age: age)
   end
 
   def self.average_age
