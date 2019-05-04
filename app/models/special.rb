@@ -6,4 +6,8 @@ class Special < ApplicationRecord
     count
   end
 
+  def self.average_runtime
+    average(:runtime_mins)
+  end
+
 end

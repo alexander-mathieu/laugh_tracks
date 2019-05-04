@@ -114,12 +114,14 @@ RSpec.describe "as a user" do
     it "it displays a box at the top of the page called 'statistics'" do
       visit('/comedians')
 
-      total_specials = Special.all.count
-      average_age    = Comedian.average(:age).to_i
+      total_specials  = Special.all.count
+      average_runtime = Special.average(:runtime_mins).to_i
+      average_age     = Comedian.average(:age).to_i
 
       within("#statistics") do
         expect(page).to have_content("Statistics")
         expect(page).to have_content("Total Specials: #{total_specials}")
+        expect(page).to have_content("Average Runtime: #{average_runtime} minutes")
         expect(page).to have_content("Average Age of Comedians: #{average_age}")
         expect(page).to have_content("#{@comedian_1.birthplace}")
         expect(page).to have_content("#{@comedian_2.birthplace}")
