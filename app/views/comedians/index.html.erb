@@ -6,7 +6,7 @@
   <p>Average Runtime: <%= @average_runtime.to_i %> minutes</p>
   <p>Average Age of Comedians: <%= @average_age.to_i %></p>
   <p>Representin':
-    <% @display_comedians.all_birthplaces.each do |birthplace| %>
+    <% @comedians.all_birthplaces.each do |birthplace| %>
     <ul>
       <li><%= birthplace %></li>
     </ul>

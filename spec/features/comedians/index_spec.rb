@@ -126,34 +126,38 @@ RSpec.describe "as a user" do
       end
     end
 
-      # it "it displays only statistics for comedians that match that age criteria" do
-      #   visit('/comedians?age=39')
-      #
-      #   within("#statistics") do
-      #     expect(page).to have_content("Statistics")
-      #     expect(page).to have_content("Total Specials: 3")
-      #     expect(page).to have_content("Average Runtime: 79")
-      #     expect(page).to have_content("Average Age of Comedians: 39")
-      #     expect(page).to have_content("#{@comedian_1.birthplace}")
-      #     expect(page).to_not have_content("#{@comedian_2.birthplace}")
-      #   end
-      # end
+      it "it displays only statistics for comedians that match that age criteria" do
+        visit('/comedians?age=39')
 
-    # describe "and add the query /comedians?sort=parameter" do
-    #   it "it displays comedians in alphabetical order by name" do
-    #     visit('/comedians?sort=name')
-    #
-    #   end
-    #
-    #   it "it displays comedians in alphabetical order by birthplace" do
-    #     visit('/comedians?sort=birthplace')
-    #
-    #   end
-    #
-    #   it "it displays comedians from youngest to oldest" do
-    #     visit('/comedians?sort=age')
-    #
-    #   end
-    # end
+        within("#statistics") do
+          expect(page).to have_content("Statistics")
+          expect(page).to have_content("Total Specials: 3")
+          expect(page).to have_content("Average Runtime: 78")
+          expect(page).to have_content("Average Age of Comedians: 39")
+          expect(page).to have_content("#{@comedian_1.birthplace}")
+          expect(page).to_not have_content("#{@comedian_2.birthplace}")
+        end
+      end
+
+    describe "and add the query /comedians?sort=parameter" do
+      before(:each) do
+        @comedian_3 = Comedian.create(name: "Theo Von", age: 38, birthplace: "Mandeville, LA", image_url: "https://uproxx.files.wordpress.com/2016/02/theo-von-no-offense-feature.jpg?quality=95")
+      end
+
+      it "it displays comedians in alphabetical order by name" do
+        visit('/comedians?sort=name')
+
+      end
+
+      it "it displays comedians in alphabetical order by birthplace" do
+        visit('/comedians?sort=birthplace')
+
+      end
+
+      it "it displays comedians from youngest to oldest" do
+        visit('/comedians?sort=age')
+
+      end
+    end
   end
 end
