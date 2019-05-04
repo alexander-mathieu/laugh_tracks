@@ -6,7 +6,7 @@
   <p>Average Runtime: <%= @average_runtime.to_i %> minutes</p>
   <p>Average Age of Comedians: <%= @average_age.to_i %></p>
   <p>Representin':
-    <% @comedians.all_birthplaces.each do |birthplace| %>
+    <% @display_comedians.all_birthplaces.each do |birthplace| %>
     <ul>
       <li><%= birthplace %></li>
     </ul>
@@ -14,7 +14,7 @@
 </section>
 
 <div id="comedians-container">
-  <% @comedians.each do |comedian| %>
+  <% @display_comedians.each do |comedian| %>
     <section class="comedian-box" id="comedian-<%= comedian.id %>">
       <img class="comedian-image" src="<%= comedian.image_url %>" alt="<%= comedian.name %>"></img>
       <h2><%= link_to comedian.name, "/comedians/#{comedian.id}" %></h2>
