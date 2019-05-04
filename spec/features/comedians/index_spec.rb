@@ -125,22 +125,12 @@ RSpec.describe "as a user" do
     end
 
     describe "and click on a comedian name" do
-      it "it displays information about a single comedian" do
+      it "I'm able to navigate to a comedian's page" do
         visit('/comedians')
 
         click_link(@comedian_1.name)
 
         expect(current_path).to eq("/comedians/#{@comedian_1.id}")
-
-        expect(page).to have_content(@comedian_1.name)
-        expect(page).to have_content(@comedian_1.age)
-        expect(page).to have_content(@comedian_1.birthplace)
-        expect(page).to have_content(@special_1a.name)
-        expect(page).to have_content(@special_2a.name)
-        expect(page).to have_content(@special_3a.name)
-        expect(page).to have_content(@special_1a.runtime_mins)
-        expect(page).to have_content(@special_2a.runtime_mins)
-        expect(page).to have_content(@special_3a.runtime_mins)
       end
     end
   end
