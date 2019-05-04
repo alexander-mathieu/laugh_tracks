@@ -9,5 +9,4 @@ class Special < ApplicationRecord
   def self.average_runtime
     average(:runtime_mins)
   end
-
 end
