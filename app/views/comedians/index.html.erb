@@ -14,7 +14,7 @@
 </section>
 
 <div id="comedians-container">
-  <% @comedians.each do |comedian| %>
+  <% @display_comedians.each do |comedian| %>
     <section class="comedian-box" id="comedian-<%= comedian.id %>">
       <img class="comedian-image" src="<%= comedian.image_url %>" alt="<%= comedian.name %>"></img>
       <h2><%= link_to comedian.name, "/comedians/#{comedian.id}" %></h2>

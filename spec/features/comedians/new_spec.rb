@@ -28,5 +28,13 @@ RSpec.describe "as a user" do
         expect(page).to have_content(comedian.birthplace)
       end
     end
+
+    it "it allows me to navigate back to /comedians" do
+      visit('/comedians/new')
+
+      click_on('<< Back to All Comedians')
+
+      expect(current_path).to eq('/comedians')
+    end
   end
 end

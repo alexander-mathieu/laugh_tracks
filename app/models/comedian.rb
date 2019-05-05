@@ -7,7 +7,7 @@ class Comedian < ApplicationRecord
   end
 
   def self.find_by_age(age)
-    where({age: age})
+    where(age: age)
   end
 
   def self.average_age
@@ -16,5 +16,9 @@ class Comedian < ApplicationRecord
 
   def self.all_birthplaces
     order(:birthplace).distinct.pluck(:birthplace)
+  end
+
+  def self.order_by(attribute)
+    order(attribute)
   end
 end

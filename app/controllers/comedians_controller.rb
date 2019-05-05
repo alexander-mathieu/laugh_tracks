@@ -3,13 +3,17 @@ class ComediansController < ApplicationController
   def index
     if params[:age] == nil
       @comedians = Comedian.all
+      @specials  = Special.all
     else
       @comedians = Comedian.find_by_age(params[:age])
+      @specials  = Special.find_by_age(params[:age])
     end
-    @average_age = @comedians.average_age
-    @specials        = Special.all
+    
     @total_specials  = @specials.total_specials
     @average_runtime = @specials.average_runtime
+
+    @average_age       = @comedians.average_age
+    @display_comedians = @comedians.order_by(params[:sort])
   end
 
   def show
