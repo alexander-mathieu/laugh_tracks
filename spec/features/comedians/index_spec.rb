@@ -90,7 +90,7 @@ RSpec.describe "as a user" do
       end
     end
 
-    it "it displays a box at the top of the page called 'statistics'" do
+    it "it displays a box at the top of the page called 'Statistics'" do
       visit('/comedians')
 
       total_specials  = Special.all.count
@@ -100,8 +100,8 @@ RSpec.describe "as a user" do
       within("#statistics") do
         expect(page).to have_content("Statistics")
         expect(page).to have_content("Total Specials: #{total_specials}")
-        expect(page).to have_content("Average Runtime: #{average_runtime} minutes")
-        expect(page).to have_content("Average Age of Comedians: #{average_age}")
+        expect(page).to have_content("Average Special Runtime: #{average_runtime} minutes")
+        expect(page).to have_content("Average Comedian Age: #{average_age}")
         expect(page).to have_content("#{@comedian_1.birthplace}")
         expect(page).to have_content("#{@comedian_2.birthplace}")
       end
@@ -111,7 +111,7 @@ RSpec.describe "as a user" do
       it "I'm able to navigate to the new comedian page" do
         visit('/comedians')
 
-        click_link("Click here to add yourself to the list.")
+        click_link("Click here to add yourself to the list!")
 
         expect(current_path).to eq('/comedians/new')
       end
@@ -142,31 +142,38 @@ RSpec.describe "as a user" do
         within("#statistics") do
           expect(page).to have_content("Statistics")
           expect(page).to have_content("Total Specials: 3")
-          expect(page).to have_content("Average Runtime: 78")
-          expect(page).to have_content("Average Age of Comedians: 39")
+          expect(page).to have_content("Average Special Runtime: 78")
+          expect(page).to have_content("Average Comedian Age: 39")
           expect(page).to have_content("#{@comedian_1.birthplace}")
           expect(page).to_not have_content("#{@comedian_2.birthplace}")
         end
       end
 
-    # describe "and add the query /comedians?sort=parameter" do
-    #   before(:each) do
-    #     @comedian_3 = Comedian.create(name: "Theo Von", age: 38, birthplace: "Mandeville, LA", image_url: "https://uproxx.files.wordpress.com/2016/02/theo-von-no-offense-feature.jpg?quality=95")
-    #   end
-    #
-    #   it "it displays comedians in alphabetical order by name" do
-    #     visit('/comedians?sort=name')
-    #
-    #   end
-    #
-    #   it "it displays comedians in alphabetical order by birthplace" do
-    #     visit('/comedians?sort=birthplace')
-    #
-    #   end
-    #
-    #   it "it displays comedians from youngest to oldest" do
-    #     visit('/comedians?sort=age')
-    #
-    #  end
+    describe "and add the query /comedians?sort=parameter" do
+      before(:each) do
+        @comedian_3 = Comedian.create(name: "Theo Von", age: 38, birthplace: "Mandeville, LA", image_url: "https://uproxx.files.wordpress.com/2016/02/theo-von-no-offense-feature.jpg?quality=95")
+      end
+
+      it "it displays comedians in alphabetical order by name" do
+        visit('/comedians?sort=name')
+
+        expect(@comedian_2.name).to appear_before(@comedian_1.name)
+        expect(@comedian_1.name).to appear_before(@comedian_3.name)
+      end
+
+      it "it displays comedians in alphabetical order by birthplace" do
+        visit('/comedians?sort=birthplace')
+
+        expect(@comedian_3.name).to appear_before(@comedian_1.name)
+        expect(@comedian_1.name).to appear_before(@comedian_2.name)
+      end
+
+      it "it displays comedians from youngest to oldest" do
+        visit('/comedians?sort=age')
+
+        expect(@comedian_3.name).to appear_before(@comedian_1.name)
+        expect(@comedian_1.name).to appear_before(@comedian_2.name)
+      end
+    end
   end
 end
