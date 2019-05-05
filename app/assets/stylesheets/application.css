@@ -17,4 +17,15 @@
 .comedian-image {
   height:200px;
   width:200px;
+  border: 1px solid black;
  }
+
+.comedian-box {
+  display:inline-block;
+  height:500px;
+  width:350px;
+  padding: 5px;
+  border: 2px solid green;
+  margin: 2px;
+  background-color: lightgreen;
+}

@@ -32,7 +32,7 @@ RSpec.describe "as a user" do
     it "it allows me to navigate back to /comedians" do
       visit('/comedians/new')
 
-      click_on('<< Back to All Comedians')
+      click_link("<< Back to All Comedians")
 
       expect(current_path).to eq('/comedians')
     end
