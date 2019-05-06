@@ -1,33 +1,39 @@
-<h1>The Funniest People Around!</h1>
+<div id="nav-bar">
+  <h1>Check Out These Clowns!</h1>
+</div>
 
 <section id="statistics">
-  <h2>Statistics</h2>
-  <p>Total Specials: <%= @total_specials %>
-  <p>Average Runtime: <%= @average_runtime.to_i %> minutes</p>
-  <p>Average Age of Comedians: <%= @average_age.to_i %></p>
-  <p>Representin':
+  <h2><u>Statistics</u></h2>
+  <p><b>Total Specials:</b> <%= @total_specials %>
+  <p><b>Average Special Runtime:</b> <%= @average_runtime.to_i %> minutes</p>
+  <p><b>Average Comedian Age:</b> <%= @average_age.to_i %></p>
+  <p><b>Representin':</b>
     <% @comedians.all_birthplaces.each do |birthplace| %>
     <ul>
-      <li><%= birthplace %></li>
+      <p><%= birthplace %></p>
     </ul>
     <% end %>
 </section>
 
-<div id="comedians-container">
+<section id="comedians-container">
   <% @display_comedians.each do |comedian| %>
-    <section class="comedian-box" id="comedian-<%= comedian.id %>">
+    <div class="comedian-box" id="comedian-<%= comedian.id %>">
       <img class="comedian-image" src="<%= comedian.image_url %>" alt="<%= comedian.name %>"></img>
-      <h2><%= link_to comedian.name, "/comedians/#{comedian.id}" %></h2>
-      <p>Age: <%= comedian.age %></p>
-      <p>Birthplace: <%= comedian.birthplace %></p>
-      <p>Specials:
+      <h2 class="comedian-link"><%= link_to comedian.name, "/comedians/#{comedian.id}" %></h2>
+      <p><b>Age:</b> <%= comedian.age %></p>
+      <p><b>Birthplace:</b> <%= comedian.birthplace %></p>
+      <p><b>Specials:</b>
         <% comedian.specials.each do |special| %>
         <ul>
-          <li><%= special.name %> - <%= special.runtime_mins %> minutes</li>
+          <li><%= special.name %> - <i><%= special.runtime_mins %> minutes</i></li>
         </ul>
-        <% end %>
-         Total Specials: <%= comedian.specials_count %>
       </p>
-    </section>
+      <% end %>
+      <p><b>Total Specials:</b> <%= comedian.specials_count %></p>
+    </div>
   <% end %>
+</section>
+
+<div id="footer">
+  <p>Are you a clown?  Or is your name <b>Kyle? <%= link_to "Click here to add yourself to the list!", '/comedians/new' %></b></p>
 </div>
