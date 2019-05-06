@@ -14,18 +14,60 @@
  *= require_self
  */
 
-.comedian-image {
-  height:200px;
-  width:200px;
-  border: 1px solid black;
- }
+h1, h2 {
+  font-family: impact;
+}
+
+p, ul, li {
+  font-family: arial;
+}
+
+a:link, a:visited {
+  color: #978D83;
+}
+
+a:hover {
+  color: #DE6B28;
+}
 
 .comedian-box {
-  display:inline-block;
-  height:500px;
-  width:350px;
+  color: #EEEEEE;
+  background-color: #233B66;
   padding: 5px;
-  border: 2px solid green;
+  border: 3px solid #DE6B28;
   margin: 2px;
-  background-color: lightgreen;
+  height:575px;
+  width:333px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.comedian-image {
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #EEEEEE;
+  height:200px;
+  width:200px;
+  display: block;
+  vertical-align: bottom;
+}
+
+.comedian-link {
+  text-align: center;
+}
+
+#nav-bar {
+  color: #EEEEEE;
+  background-color: #233B66;
+  padding: 10px;
+  border-bottom: 5px solid #978D83;
+  text-align: center;
+}
+
+#statistics {
+  text-align: center;
+  border: 5px solid #438696;
+  padding: 5px;
+  margin: 5px;
 }
